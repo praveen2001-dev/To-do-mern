@@ -15,6 +15,14 @@ export default function AllList() {
             setListData(data.result);
         }
     }
+    const deleteList = async (id) => {
+        let data = await fetch('http://localhost:3200/delete/' + id, {method:'delete'})
+        data = await data.json();
+        if (data.status) {
+            getListData();
+            console.log("List has been Delete Successfully");
+        }
+    }
 
     return (
         <div className="container">
@@ -25,6 +33,7 @@ export default function AllList() {
                         <th>S.No.</th>
                         <th>Title</th>
                         <th>Description</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +42,7 @@ export default function AllList() {
                             <td>{index + 1}</td>
                             <td>{item.title}</td>
                             <td>{item.description}</td>
+                            <td><button onClick={() => {deleteList(item._id)}} className="btn-delete">Delete</button></td>
                         </tr>
                     ))}
                 </tbody>

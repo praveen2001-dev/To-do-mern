@@ -1,7 +1,11 @@
 import express from 'express';
 import {collectionName, connection} from './dbconfig.js';
+import cors from 'cors';
 const app =  express();
 app.use(express.json());
+
+// Adds headers: Access-Control-Allow-Origin: *
+app.use(cors());
 
 app.post('/add-list',async (req,resp) => {
     const db = await connection();

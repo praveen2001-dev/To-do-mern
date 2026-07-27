@@ -14,16 +14,9 @@ app.post('/add-list',async (req,resp) => {
     const collection = await db.collection(collectionName);
     const result = await collection.insertOne(req.body);
     if (result) {
-        resp.send({
-            message:'New List has been added succesfully.',
-            status:true,
-            result
-        })
+        resp.send({message:'New List has been added succesfully.', status:true, result})
     } else {
-        resp.send({
-            message:'List has not been added.',
-            status:false
-        })
+        resp.send({message:'List has not been added.', status:false})
     }
 });
 
@@ -39,6 +32,7 @@ app.get('/list',async (req,resp) => {
     }
 })
 
+// Delete ToDo list By id
 app.delete('/delete/:id',async (req,resp) => {
     const db = await connection();
     const id = req.params.id;
@@ -51,6 +45,7 @@ app.delete('/delete/:id',async (req,resp) => {
     }
 })
 
+// Get List Todo By Id
 app.get('/list/:id',async (req,resp) => {
     const db = await connection();
     const id = req.params.id;
@@ -62,4 +57,25 @@ app.get('/list/:id',async (req,resp) => {
         resp.send({message:'Data not exist in the database.', status:false})
     }
 })
+
+// Update Add List
+app.put('/update-list/:id',async (req,resp) => {
+    console.log(req.body)
+    const db = await connection();
+    const collection = await db.collection(collectionName);
+    const result = await collection.updateOne(
+        { _id: new ObjectId(req.params.id) },
+        {
+            $set: {
+                title: req.body.title,
+                description: req.body.description
+            }
+        }
+    );
+    if (result) {
+        resp.send({message:'Update List has been added succesfully.', status:true, result})
+    } else {
+        resp.send({message:'List has not been Updated.', status:false})
+    }
+});
 app.listen(3200);

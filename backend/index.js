@@ -23,5 +23,23 @@ app.post('/add-list',async (req,resp) => {
             status:false
         })
     }
+});
+
+app.get('/list',async (req,resp) => {
+    const db = await connection();
+    const collection = await db.collection(collectionName);
+    const result = await collection.find().toArray();
+    if (result) {
+        resp.send({
+            message:'Task List fetch.',
+            status:true,
+            result
+        })
+    } else {
+        resp.send({
+            message:'Data not exist in the database.',
+            status:false
+        })
+    }
 })
 app.listen(3200);

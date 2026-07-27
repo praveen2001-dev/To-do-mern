@@ -1,0 +1,66 @@
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.tableData {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.tableData thead {
+    background-color: #007bff;
+    color: white;
+}
+
+.tableData th,
+.tableData td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.tableData tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.tableData tbody tr:hover {
+    background-color: #eaf4ff;
+    transition: 0.3s;
+}
+
+.tableData th {
+    font-weight: 600;
+}
+
+.tableData td {
+    color: #444;
+}
+
+/* Odd Rows */
+.tableData tbody tr:nth-child(odd) td {
+    background-color: #f8f9fa;
+}
+
+/* Even Rows */
+.tableData tbody tr:nth-child(even) td {
+    background-color: #e8f4ff;
+}
+
+/* Hover Effect */
+.tableData tbody tr:hover td {
+    background-color: #d1ecff;
+    transition: background-color 0.3s ease;
+}

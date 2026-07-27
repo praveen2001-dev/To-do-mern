@@ -3,6 +3,7 @@ import './style/App.css'
 import NavBar from './components/NavBar'
 import { Route, Routes } from 'react-router-dom'
 import AddList from './components/AddList'
+import AllList from './components/AllList'
 
 function App() {
 
@@ -10,7 +11,7 @@ function App() {
     <>
     <NavBar />
     <Routes>
-      <Route path='/' element={<h1>To Do List</h1>} />
+      <Route path='/' element={<AllList />} />
       <Route path='/add' element={<AddList />} /> 
     </Routes>
     </>

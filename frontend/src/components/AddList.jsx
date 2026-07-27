@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import '../style/add-list.css'
+import { useNavigate } from 'react-router-dom';
+
 function AddList() {
     const [taskList, setListData] = useState();
+    const navigate = useNavigate();
     const handleAddList = async () => {
         let result = await fetch('http://localhost:3200/add-list',
             {
@@ -14,6 +17,7 @@ function AddList() {
         )
         result = await result.json()
         if (result) {
+            navigate("/");
             console.log("New List Added")
         } else {
             console.log("Something went wrong, error!")

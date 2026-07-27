@@ -64,3 +64,64 @@ h1 {
     background-color: #d1ecff;
     transition: background-color 0.3s ease;
 }
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+.btn-delete:active {
+    transform: scale(0.95);
+}
+
+.btn-delete:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* Edit btn */
+
+.edit-btn {
+    background-color: #1d482c;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.edit-btn:hover {
+    background-color: #112333;
+    transform: scale(1.05);
+}
+
+.edit-btn:active {
+    transform: scale(0.95);
+}
+
+.edit-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.btn-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

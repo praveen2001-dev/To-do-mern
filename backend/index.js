@@ -8,6 +8,7 @@ app.use(express.json());
 // Adds headers: Access-Control-Allow-Origin: *
 app.use(cors());
 
+// New Add List
 app.post('/add-list',async (req,resp) => {
     const db = await connection();
     const collection = await db.collection(collectionName);
@@ -26,21 +27,15 @@ app.post('/add-list',async (req,resp) => {
     }
 });
 
+// Get all List Data
 app.get('/list',async (req,resp) => {
     const db = await connection();
     const collection = await db.collection(collectionName);
     const result = await collection.find().toArray();
     if (result) {
-        resp.send({
-            message:'Task List fetch.',
-            status:true,
-            result
-        })
+        resp.send({message:'Task List fetch.', status:true, result})
     } else {
-        resp.send({
-            message:'Data not exist in the database.',
-            status:false
-        })
+        resp.send({message:'Data not exist in the database.', status:false})
     }
 })
 
@@ -56,4 +51,15 @@ app.delete('/delete/:id',async (req,resp) => {
     }
 })
 
+app.get('/list/:id',async (req,resp) => {
+    const db = await connection();
+    const id = req.params.id;
+    const collection = await db.collection(collectionName);
+    const result = await collection.findOne({_id:new ObjectId(id)});
+    if (result) {
+        resp.send({message:'List fetch By Id.', status:true, result})
+    } else {
+        resp.send({message:'Data not exist in the database.', status:false})
+    }
+})
 app.listen(3200);

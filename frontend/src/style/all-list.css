@@ -64,7 +64,7 @@ h1 {
     background-color: #d1ecff;
     transition: background-color 0.3s ease;
 }
-.btn-delete {
+.btn-delete, .delete-item {
     background-color: #dc3545;
     color: #fff;
     border: none;
@@ -125,3 +125,4 @@ h1 {
     align-items: center;
     gap: 10px;
 }
+.ListDelete {margin-bottom:10px;}

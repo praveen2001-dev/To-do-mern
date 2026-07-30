@@ -32,10 +32,24 @@ app.get('/list',async (req,resp) => {
     }
 })
 
+// Delete ToDo All list
+app.delete('/delete-multiple',async (req,resp) => {
+    const ids = req.body;
+    const deleteTaskIds = ids.map((item) => new ObjectId(item));
+    const db = await connection();
+    const collection = await db.collection(collectionName);
+    const result = await collection.deleteMany({_id:{$in:deleteTaskIds}});
+    if (result) {
+        resp.send({message:'Task Deleted Successfully.',status:true, result})
+    } else {
+        resp.send({message:'something went wrong.',status:false})
+    }
+})
+
 // Delete ToDo list By id
 app.delete('/delete/:id',async (req,resp) => {
-    const db = await connection();
     const id = req.params.id;
+    const db = await connection();
     const collection = await db.collection(collectionName);
     const result = await collection.deleteOne({_id:new ObjectId(id)});
     if (result) {
@@ -47,8 +61,8 @@ app.delete('/delete/:id',async (req,resp) => {
 
 // Get List Todo By Id
 app.get('/list/:id',async (req,resp) => {
-    const db = await connection();
     const id = req.params.id;
+    const db = await connection();
     const collection = await db.collection(collectionName);
     const result = await collection.findOne({_id:new ObjectId(id)});
     if (result) {
@@ -60,7 +74,6 @@ app.get('/list/:id',async (req,resp) => {
 
 // Update Add List
 app.put('/update-list/:id',async (req,resp) => {
-    console.log(req.body)
     const db = await connection();
     const collection = await db.collection(collectionName);
     const result = await collection.updateOne(

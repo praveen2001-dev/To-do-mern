@@ -1,13 +1,12 @@
 import { useState } from 'react'
-import './style/App.css'
-import NavBar from './components/NavBar'
 import { Route, Routes } from 'react-router-dom'
+import NavBar from './components/NavBar'
 import AddList from './components/AddList'
 import AllList from './components/AllList'
 import EditList from './components/EditList'
+import './style/App.css'
 
-function App() {
-
+export default function App() {
   return (
     <>
     <NavBar />
@@ -19,5 +18,3 @@ function App() {
     </>
   )
 }
-
-export default App

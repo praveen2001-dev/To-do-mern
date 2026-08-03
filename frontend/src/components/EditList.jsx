@@ -10,7 +10,7 @@ export default function EditList() {
         getListById(id)
     }, []);
     const getListById = async (id) => {
-        let list = await fetch('http://localhost:3200/list/' + id)
+        let list = await fetch('http://localhost:3200/list/' + id, {credentials:'include'})
         list = await list.json();
         if (list.status) {
             setListData(list.result);
@@ -21,7 +21,8 @@ export default function EditList() {
             `http://localhost:3200/update-list/${id}`,
             {
                 method:"put", body:JSON.stringify(taskList),
-                headers: {'Content-Type': 'Application/Json'}
+                headers: {'Content-Type': 'Application/Json'},
+                credentials:'include'
             }
         )
         list = await list.json();

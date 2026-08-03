@@ -12,7 +12,8 @@ function AddList() {
                 body: JSON.stringify(taskList),
                 headers: {
                     'Content-Type': 'Application/Json'
-                }
+                },
+                credentials:'include'
             }
         )
         result = await result.json()

@@ -11,14 +11,14 @@ export default function AllList() {
     }, []);
 
     const getListData = async () => {
-        let data = await fetch('http://localhost:3200/list')
+        let data = await fetch('http://localhost:3200/list', {credentials:'include'})
         data = await data.json();
         if (data.status) {
             setListData(data.result);
         }
     }
     const deleteList = async (id) => {
-        let data = await fetch('http://localhost:3200/delete/' + id, {method:'delete'})
+        let data = await fetch('http://localhost:3200/delete/' + id, {method:'delete', credentials:'include'})
         data = await data.json();
         if (data.status) {
             getListData();
@@ -50,7 +50,8 @@ export default function AllList() {
                 body: JSON.stringify(selectedTask),
                 headers: {
                     'Content-Type': 'Application/Json'
-                }
+                },
+                credentials:'include'
             }
         )
         data = await data.json();
